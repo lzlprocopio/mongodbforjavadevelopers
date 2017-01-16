@@ -17,32 +17,26 @@
 
 package com.mongodb;
 
+import static spark.Spark.get;
+
 import spark.Request;
 import spark.Response;
 import spark.Route;
 import spark.Spark;
 
 public class SparkRoutes {
-    public static void main(String[] args) {
-//        Spark.get(new Route("/") {
-//            @Override
-//            public Object handle(final Request request, final Response response) {
-//                return "Hello World\n";
-//            }
-//        });
-//
-//        Spark.get(new Route("/test") {
-//            @Override
-//            public Object handle(final Request request, final Response response) {
-//                return "This is a test page\n";
-//            }
-//        });
-//
-//        Spark.get(new Route("/echo/:thing") {
-//            @Override
-//            public Object handle(final Request request, final Response response) {
-//                return request.params(":thing");
-//            }
-//        });
-    }
+	public static void main(String[] args) {
+
+		get("/", (req, res) -> {
+			return "Hello World\n";
+		});
+
+		get("/test", (req, res) -> {
+			return "This is a test page\n";
+		});
+
+		get("/echo/:thing", (req, res) -> {
+			return req.params(":thing");
+		});
+	}
 }
